@@ -37,10 +37,10 @@ Goal: To know participants click on which region.
 (3) For each trial, using the mouse click response, create four columns "ta","ti","da","di" (one for each possible response). 
     For each column set the value to 1 if the participant clicked on that picture; otherwise, set the value to 0.
 
-     TA = Target animal
-     TI = Target instrument
-     DA = Distractor animal
-     DI = Distractor instrument
+     ta = Target animal
+     ti = Target instrument
+     da = Distractor animal
+     di = Distractor instrument
 
 (4) Create a bar plot showing the mouse click results (i.e., the percentage of mouse clicks on the target instrument picture).
 
@@ -49,7 +49,7 @@ Goal: To know participants click on which region.
 Goal: To know participants' eye movement patterns in each trial.
 
 (1) Align the fixation time to the onset of the verb in each trial. 
-    Add three columns (1) time length and (2) time accumulation (3) time window into the eye movement raw data file.
+    Add three columns: (a) time length and (b) time accumulation (c) time window into the eye movement raw data file.
 
 (2) Use the "DeviceTimeStamp" column to calculate the time difference between two fixations in the "time length" column.
     Next, for each trial, subtract the value in "time length" column from that of the previous trial and 
