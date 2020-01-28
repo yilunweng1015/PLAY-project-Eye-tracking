@@ -84,9 +84,11 @@ Inputs: Output file of eye movement results
 
 (1) Add a column "firstfix" in the data file.
 
-(2) Use the "TrialID", "time accumulation" and "time window" column to determine the first true fixation.
-    The criterion for the first true fixation is 25 consecutive fixations on the same image. 
-    For both time window 1 (the verb region) and time window 2 (the N1 region), find the first 25 consecutive fixations on a single image. 
-    Where these 25 consecutive fixations are found in each time window, set the value of "firstfix" to "1". 
-    Set all other values in the "firstfix" column to "0".
+(2) All time windows are offset by 200 milliseconds to account for the time needed to program and launch an eye movement (Hallett, 1986)  
+
+(3) Use the "TrialID", "time accumulation" and "time window" column to determine the first true fixation.  
+    The criterion for the first true fixation is 25 consecutive fixations on the same image.  
+    For both time window 1 (the verb region) and time window 2 (the N1 region), find the first 25 consecutive fixations on a single image.   
+    Where these 25 consecutive fixations are found in each time window, set the value of "firstfix" to "1".  
+    Set all other values in the "firstfix" column to "0".  
 
