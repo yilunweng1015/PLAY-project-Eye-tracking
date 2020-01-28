@@ -1,10 +1,7 @@
-# Prediction and Learning in Adults and Youths (PLAY) Project Summary
-## Eye Movement Data analysis (01/23/2020 updated)
-###  Yi-Lun Weng
-#####  
+## Eye Movement Data analysis (01/23/2020 updated by Yi-Lun Weng)
+  
 
-
-## **There are three things to do for eye movement data preprocessing** (10/10/2019)   
+## **There are three things to do for eye movement data preprocessing** 
 
 1. Identify which picture participants clicked on in each condition. (Mouse click results)
 
