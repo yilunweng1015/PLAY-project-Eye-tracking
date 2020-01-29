@@ -1,4 +1,4 @@
-rm(list = ls())
+#rm(list = ls())
 library(ez)
 library(plyr)
 library(dplyr)
@@ -7,7 +7,7 @@ library(ggplot2)
 library(Matrix)
 library(lme4)
 
-filename1 <- "play_a_001"
+filename1 <- "play_a_027"
 path <- getwd()
 
 ##### load files #####
@@ -24,7 +24,6 @@ subdata <- subset(Data, Condition!="filler" & Condition!="Practice" & AOI!= "0")
 subdata1 <- subdata[!duplicated(subdata$TrialID),]
 
 ## Mouse click
-# LR=20 ; TL=21 ; LL=22 ; TR=23
 lengttrial <- length(subdata1$TrialID)
 
 for (i in 1:lengttrial) {
@@ -40,5 +39,18 @@ for (i in 1:lengttrial) {
   }
 }
 
+subdata1 <- subdata1 %>%
+  mutate(click_loc = ifelse(Tiloc == click, "tiloc", ifelse(
+    Tloc == click, "tloc", ifelse(Cloc == click, "cloc", "ciloc")
+  ))) %>%
+  as.data.frame()
 
-write.csv(subdata1,file = "play_a_001_mouseclick.csv",row.names=T)
+subdata1$click_loc <- replace(subdata1$click_loc, subdata1$click_loc=='tloc', "ta")
+subdata1$click_loc <- replace(subdata1$click_loc, subdata1$click_loc=='tiloc', "ti")
+subdata1$click_loc <- replace(subdata1$click_loc, subdata1$click_loc=='cloc', "da")
+subdata1$click_loc <- replace(subdata1$click_loc, subdata1$click_loc=='ciloc', "di")
+
+
+
+write.csv(subdata1,file = "play_a_027_mouseclick.csv",row.names=T)
+
