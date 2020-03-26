@@ -11,7 +11,7 @@
    
     => Output data: play_mouseclick_lmer_result.xlsx & play_mouseclick_plot.eps
 
-2.  Eye movement results: Calculate proportion of fixation on each target in each condition
+2.  Eye fixation results: Calculate proportion of fixation on each target in each condition
 
     => Input data:  play_eye_fixation_proportion.csv & play_eye_fixation_proportion_plot.csv
    
@@ -58,7 +58,7 @@ Goal: To know participants click on which region.
 
 (4) Create a bar plot showing the mouse click results (i.e., the percentage of mouse clicks on the target instrument picture).
 
-### **2. Eye movement results** 
+### **2. Eye fixation results** 
 
 Goal: To know participants' eye movement patterns in each trial.
 
