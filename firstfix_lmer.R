@@ -2,54 +2,6 @@ library(lme4)
 library(lmerTest)
 library(optimx)
 library(Rmisc)
-library(ggsignif)
-library(ggplot2)
-Data <- read.csv("play_firstlook_time.csv")
-
-my.helmert = matrix(c(1/3, -2/3, 1/3, -1/2, 0, 1/2), ncol = 2)
-contrasts(Data$cond) = my.helmert
-
-DataIn <- subset(Data, look!="animal")
-DataAn <- subset(Data, look!="instrument")
-
-## Target instrument region
-resultIn <- lmer(time ~ 1 + cond + (1|subject), data = DataIn, control = lmerControl(optimizer= "optimx", optCtrl=list(method="nlminb")))
-summary(resultIn)
-
-## Target animal region
-resultAn <- lmer(time ~ 1 + cond + (1|subject), data = DataAn, control = lmerControl(optimizer= "optimx", optCtrl=list(method="nlminb")))
-summary(resultAn)
-
-
-## making plots
-df0 <- summarySE(Data, measurevar="time", groupvars=c("look","cond"))
-positions <- c("Instrument-biased", "Equi-biased", "Modifier-biased")
-
-plot1 <- ggplot(df0, aes(x = cond, y = time, group = look)) +
-  geom_line(aes(linetype = look), position = position_dodge(width = 0.2)) +
-  geom_errorbar(aes(ymin = time - se, ymax = time + se),
-                width = .1, position = position_dodge(width = 0.2), linetype = 1) +
-  geom_point(size = 4, position = position_dodge(width = 0.2)) +
-  geom_point(size = 3, position = position_dodge(width = 0.2), color = "black") +
-  guides(linetype = guide_legend("Look Region")) +
-  theme(
-    panel.background = element_rect(fill = "white"),
-    legend.key  = element_rect(fill = "white"),
-    axis.line.x = element_line(colour = "black", size = 1),
-    axis.line.y = element_line(colour = "black", size = 1)
-  ) + scale_x_discrete(limits = positions) +
-  labs(
-     x = "Verb bias conditions",
-     y = "Time relative to verb offset (0 ~ 0.9sec)") +
-  ylim(0, 0.8) 
-
-
-#######################################################
-
-library(lme4)
-library(lmerTest)
-library(optimx)
-library(Rmisc)
 library(ggplot2)
 library(ggsignif)
 Data <- read.csv("play_firstlook_proportion.csv")
@@ -92,8 +44,54 @@ plot1 <- ggplot(df0, aes(x = cond, y = mean, group = look)) +
   #geom_signif(comparisons = list(c("Instrument-biased", "Modifier- and Equi-biased")), 
               #annotations = "**", y_position = 0.8)
 
-
-
+# ##################
+# library(lme4)
+# library(lmerTest)
+# library(optimx)
+# library(Rmisc)
+# library(ggsignif)
+# library(ggplot2)
+# Data <- read.csv("play_firstlook_time.csv")
+# 
+# my.helmert = matrix(c(1/3, -2/3, 1/3, -1/2, 0, 1/2), ncol = 2)
+# contrasts(Data$cond) = my.helmert
+# 
+# DataIn <- subset(Data, look!="animal")
+# DataAn <- subset(Data, look!="instrument")
+# 
+# ## Target instrument region
+# resultIn <- lmer(time ~ 1 + cond + (1|subject), data = DataIn, control = lmerControl(optimizer= "optimx", optCtrl=list(method="nlminb")))
+# summary(resultIn)
+# 
+# ## Target animal region
+# resultAn <- lmer(time ~ 1 + cond + (1|subject), data = DataAn, control = lmerControl(optimizer= "optimx", optCtrl=list(method="nlminb")))
+# summary(resultAn)
+# 
+# 
+# ## making plots
+# df0 <- summarySE(Data, measurevar="time", groupvars=c("look","cond"))
+# positions <- c("Instrument-biased", "Equi-biased", "Modifier-biased")
+# 
+# plot1 <- ggplot(df0, aes(x = cond, y = time, group = look)) +
+#   geom_line(aes(linetype = look), position = position_dodge(width = 0.2)) +
+#   geom_errorbar(aes(ymin = time - se, ymax = time + se),
+#                 width = .1, position = position_dodge(width = 0.2), linetype = 1) +
+#   geom_point(size = 4, position = position_dodge(width = 0.2)) +
+#   geom_point(size = 3, position = position_dodge(width = 0.2), color = "black") +
+#   guides(linetype = guide_legend("Look Region")) +
+#   theme(
+#     panel.background = element_rect(fill = "white"),
+#     legend.key  = element_rect(fill = "white"),
+#     axis.line.x = element_line(colour = "black", size = 1),
+#     axis.line.y = element_line(colour = "black", size = 1)
+#   ) + scale_x_discrete(limits = positions) +
+#   labs(
+#     x = "Verb bias conditions",
+#     y = "Time relative to verb offset (0 ~ 0.9sec)") +
+#   ylim(0, 0.8) 
+# 
+# 
+# #######################################################
 
 
 # ## Target instrument region
