@@ -5,11 +5,11 @@
 
 1.  Mouse click results: Identify which picture participants clicked on in each condition
 
-   => Input data:  play_mouseclick.csv & play_mouseclick_plot.csv
+    => Input data:  play_mouseclick.csv & play_mouseclick_plot.csv
    
-   => R script:    mouseclick_lmer.R & mouseclick_plot.R
+    => R script:    mouseclick_lmer.R & mouseclick_plot.R
    
-   => Output data: play_mouseclick_lmer_result.xlsx & play_mouseclick_plot.eps
+    => Output data: play_mouseclick_lmer_result.xlsx & play_mouseclick_plot.eps
 
 2.  Eye movement results: Calculate proportion of fixation on each target in each condition
 
@@ -27,7 +27,7 @@
    
    => Output data: play_firstfix_lmer_result.xlsx & firstfix_plot.eps
   
-#### == All the data files and scripts are saved on the NAS: \projects\play\analysis\eyemovement ==
+#### == ***All the data files and scripts are saved on the NAS: \projects\play\analysis\eyemovement*** ==
   
   
 ### **1. Mouse click results**  
