@@ -1,21 +1,29 @@
-## Eye Movement Data analysis (01/23/2020 updated by Yi-Lun Weng)
+# Eye Movement Data analysis (03/24/2020 updated by Yi-Lun Weng)
   
 
-## **There are three things to do for eye movement data preprocessing** 
+## **Overview** 
 
-1. Identify which picture participants clicked on in each condition. (Mouse click results)
+1.  Mouse click results: Identify which picture participants clicked on in each condition
 
-  => Using the R script "mouseclick.R" (Output file: play_a_xxx_mouseclick.csv)
+   => Input data:  play_mouseclick.csv & play_mouseclick_plot.csv
+   => R script:    mouseclick_lmer.R & mouseclick_plot.R
+   => Output data: play_mouseclick_lmer_result.xlsx & play_mouseclick_plot.eps
 
-2. Calculate proportion of fixation on each target in each condition. (Eye movement results)
+2.  Eye movement results: Calculate proportion of fixation on each target in each condition
 
-  => using the R script "eyemovement.R" (Output file: play_a_xxx_eyemovement.csv)
+   => Input data:  play_eye_fixation_proportion.csv & play_eye_fixation_proportion_plot.csv
+   => R script:    fixation_lmer.R & fixation_plot.R
+   => Output data: play_fixation_lmer_result.xlsx & fixation_plot.eps
 
-3. Identify the first fixations after (1) the verb and (2) the N1 region. (For similarity analysis)
+3.  First fixation results: Identify the first fixation after the verb offset
 
-  => using the R script "firstfixation.R" (Output file: play_a_xxx_firstfixation.csv)
+   => Input data:  play_firstlook_proportion.csv & play_firstlook_proportion_lmer.csv
+   => R script:    firstfix_lmer.R & firstfix_plot.R
+   => Output data: play_firstfix_lmer_result.xlsx & firstfix_plot.eps
   
-
+#### == All the data files and scripts are saved on the NAS: \projects\play\analysis\eyemovement ==
+  
+  
 ### **1. Mouse click results**  
 
 Goal: To know participants click on which region.
@@ -76,17 +84,16 @@ Goal: To know participants' eye movement patterns in each trial.
 (5) Visualize the eye movement results in a spaghetti plot.
 
 
-### **3. Identifying first anticipatory look** 
+### **3. First fixation results** 
 
-Goal: To find the first anticipatory look in the verb and the N1 region for the similarity analysis.
+Goal: To find the first anticipatory look after the verb offset.
 
-Inputs: Output file of eye movement results
 
 (1) Add a column "firstfix" in the data file.
 
 (2) All time windows are offset by 200 milliseconds to account for the time needed to program and launch an eye movement (Hallett, 1986)  
 
-(3) Use the "TrialID", "time accumulation" and "time window" column to determine the first true fixation.  
+(3) Use the "TrialID", "time accumulation" and "time window" column to determine the first true fixation.
     The criterion for the first true fixation is 25 consecutive fixations on the same image.  
     For both time window 1 (the verb region) and time window 2 (the N1 region), find the first 25 consecutive fixations on a single image.   
     Where these 25 consecutive fixations are found in each time window, set the value of "firstfix" to "1".  
