@@ -1,4 +1,4 @@
-# Eye Movement Data analysis (03/24/2020 updated by Yi-Lun Weng)
+## Eye Movement Data analysis (03/24/2020 updated by Yi-Lun Weng)
   
 
 ## **Overview** 
@@ -13,21 +13,21 @@
 
 2.  Eye movement results: Calculate proportion of fixation on each target in each condition
 
-   => Input data:  play_eye_fixation_proportion.csv & play_eye_fixation_proportion_plot.csv
+    => Input data:  play_eye_fixation_proportion.csv & play_eye_fixation_proportion_plot.csv
    
-   => R script:    fixation_lmer.R & fixation_plot.R
+    => R script:    fixation_lmer.R & fixation_plot.R
    
-   => Output data: play_fixation_lmer_result.xlsx & fixation_plot.eps
+    => Output data: play_fixation_lmer_result.xlsx & fixation_plot.eps
 
 3.  First fixation results: Identify the first fixation after the verb offset
 
-   => Input data:  play_firstlook_proportion.csv & play_firstlook_proportion_lmer.csv
+    => Input data:  play_firstlook_proportion.csv & play_firstlook_proportion_lmer.csv
    
-   => R script:    firstfix_lmer.R & firstfix_plot.R
+    => R script:    firstfix_lmer.R & firstfix_plot.R
    
-   => Output data: play_firstfix_lmer_result.xlsx & firstfix_plot.eps
+    => Output data: play_firstfix_lmer_result.xlsx & firstfix_plot.eps
   
-#### == ***All the data files and scripts are saved on the NAS: \projects\play\analysis\eyemovement*** ==
+####  ***All the data files and scripts are saved on the NAS: \projects\play\analysis\eyemovement*** 
   
   
 ### **1. Mouse click results**  
