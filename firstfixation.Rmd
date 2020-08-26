@@ -1,0 +1,57 @@
+---
+title: "First Fixation"
+author: "Yi-Lun Weng"
+date: "8/25/2020"
+output: html_document
+---
+
+```{r, warning=FALSE, message=FALSE}
+library(ggplot2)
+library(forcats)
+library("PerformanceAnalytics")
+library("ggpubr")
+library("Hmisc")
+library("gridExtra")
+library("reshape2")
+library("dplyr")
+library("corrplot")
+library("Rmisc")
+## Import data
+data <- read.csv("~/Desktop/play/firstfixation/firstfixation_ana.csv")
+data$cond <- factor(data$cond, levels = c("instrument-biased","equi-biased","modifier-biased"),ordered = TRUE)
+df <- summarySE(data, measurevar="duration", groupvars=c("verb", "cond", "inst_bias"))
+df0 <- summarySE(data, measurevar="duration", groupvars=c("cond"))
+```
+
+```{r}
+# Bar graph - 3 conditions
+ggplot(df0, aes(x=cond, y=duration, fill=cond)) + 
+geom_bar(stat="identity", color="black") +
+geom_errorbar(aes(ymin=duration-se, ymax=duration+se), width = 0.1)+
+ylim(0, 1.5)+
+xlab("Bias Conditions") +
+ylab("First Fixation Duration (second)") +
+theme_classic(base_size = 14)+
+scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9"), guide = guide_legend(title = "Bias Conditions"))
+```
+
+```{r}
+# Bar graph
+ggplot(df, aes(x=duration, y=fct_reorder(verb, inst_bias), fill=cond)) + 
+geom_bar(stat="identity", color="black") +
+geom_errorbar(aes(xmin=duration-se, xmax=duration+se),width = 0.02)+
+xlab("First Fixation Duration (second)") +
+ylab("All Verbs (Low to High inst-biased degree)") +
+theme_classic(base_size = 14)+
+scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9"), guide = guide_legend(title = "Bias Conditions"))
+```
+
+```{r}
+# Box plot
+ggplot(data, aes(x=duration, y=fct_reorder(verb, inst_bias), fill=cond)) + 
+  geom_boxplot()+
+  xlab("First Fixation Duration (second)") +
+  ylab("All Verbs") +
+  theme_classic(base_size = 14)+
+  scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9"), guide = guide_legend(title = "Bias Conditions"))
+```
